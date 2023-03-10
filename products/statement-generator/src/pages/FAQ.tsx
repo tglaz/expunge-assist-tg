@@ -32,7 +32,7 @@ function FAQ() {
         .then((entry: any) => {
           const renderOptions = {
             renderNode: {
-              // Renders hyperlink elements as a LinkAsText components
+              // Renders hyperlink elements as a LinkAsText components.
               // The LinkAsText implementation only renders the href/uri, which may
               // not work as expected if contentful link includes other content.
               [INLINES.HYPERLINK]: (node: any) => {
