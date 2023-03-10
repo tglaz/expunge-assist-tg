@@ -23,9 +23,17 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Build client files
+      - name: Setup Environment Variables
         run: |
           cd products/statement-generator
+          touch .env
+          echo REACT_APP_CONTENTFUL_DELIVERY_API_ACCESS_TOKEN=${{ vars.REACT_APP_CONTENTFUL_DELIVERY_API_ACCESS_TOKEN }} > .env
+          echo REACT_APP_CONTENTFUL_ENV=${{ vars.REACT_APP_CONTENTFUL_ENV }} > .env
+          echo REACT_APP_CONTENTFUL_FAQ_SPACE_ID=${{ vars.REACT_APP_CONTENTFUL_FAQ_SPACE_ID }} > .env
+          echo REACT_APP_CONTENTFUL_ENTRY_ID_FAQ=${{ vars.REACT_APP_CONTENTFUL_ENTRY_ID_FAQ }} > .env
+
+      - name: Build client files
+        run: |
           npm install
           npm run build
 
