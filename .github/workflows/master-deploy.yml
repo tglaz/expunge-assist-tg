@@ -34,6 +34,7 @@ jobs:
 
       - name: Build client files
         run: |
+          cd products/statement-generator
           npm install
           npm run build
 
